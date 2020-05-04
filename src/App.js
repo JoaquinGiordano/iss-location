@@ -11,12 +11,7 @@ class App extends React.Component {
 	}
 
 	componentDidMount() {
-		fetch('http://api.open-notify.org/iss-now.json', {
-			mode: 'cors',
-			headers: {
-				'Access-Control-Allow-Origin': '*',
-			},
-		})
+		fetch('https://api.wheretheiss.at/v1/satellites/25544')
 			.then(data => {
 				return data.text()
 			})
@@ -25,8 +20,8 @@ class App extends React.Component {
 			})
 			.then(myJson => {
 				this.setState({
-					long: Number(myJson.iss_position.longitude).toFixed(2),
-					lat: Number(myJson.iss_position.latitude).toFixed(2),
+					long: Number(myJson.longitude).toFixed(2),
+					lat: Number(myJson.latitude).toFixed(2),
 				})
 			})
 	}
