@@ -11,7 +11,12 @@ class App extends React.Component {
 	}
 
 	componentDidMount() {
-		fetch('http://api.open-notify.org/iss-now.json')
+		fetch('http://api.open-notify.org/iss-now.json', {
+			mode: 'cors',
+			headers: {
+				'Access-Control-Allow-Origin': '*',
+			},
+		})
 			.then(data => {
 				return data.text()
 			})
