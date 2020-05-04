@@ -6,32 +6,32 @@ class App extends React.Component {
 		super(props)
 		this.state = {
 			long: '',
-			lat: ''
+			lat: '',
 		}
 	}
 
 	componentDidMount() {
 		fetch('http://api.open-notify.org/iss-now.json')
-			.then((data) => {
+			.then(data => {
 				return data.text()
 			})
-			.then((data) => {
+			.then(data => {
 				return JSON.parse(data)
 			})
-			.then((myJson) => {
+			.then(myJson => {
 				this.setState({
 					long: Number(myJson.iss_position.longitude).toFixed(2),
-					lat: Number(myJson.iss_position.latitude).toFixed(2)
+					lat: Number(myJson.iss_position.latitude).toFixed(2),
 				})
 			})
 	}
 
 	render() {
 		return (
-			<React.Fragment>
+			<div id='App'>
 				<h2>Longitude: {this.state.long}°</h2>
 				<h2>Latitude: {this.state.lat}°</h2>
-			</React.Fragment>
+			</div>
 		)
 	}
 }
