@@ -29,8 +29,12 @@ class App extends React.Component {
 	render() {
 		return (
 			<div id='App'>
-				<h2>Longitude: {this.state.long}°</h2>
-				<h2>Latitude: {this.state.lat}°</h2>
+				<h2>
+					Longitude: <span>{this.state.long}°</span>
+				</h2>
+				<h2>
+					Latitude: <span>{this.state.lat}°</span>
+				</h2>
 			</div>
 		)
 	}
