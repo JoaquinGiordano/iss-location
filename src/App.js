@@ -8,7 +8,7 @@ class App extends React.Component {
 		this.state = {
 			long: '',
 			lat: '',
-			socket: io('https://iss-location-socket-fgq3ldzem.now.sh/'),
+			socket: io('https://iss-location-socket.joaquingiordano.now.sh/'),
 		}
 	}
 
