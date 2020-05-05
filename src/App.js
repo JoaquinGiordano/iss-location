@@ -24,7 +24,7 @@ class App extends React.Component {
 	render() {
 		return (
 			<div id='App'>
-				<h1>Internation Space Station</h1>
+				<h1>International Space Station</h1>
 				<h2>
 					Longitude: <span>{this.state.long}°</span>
 				</h2>
