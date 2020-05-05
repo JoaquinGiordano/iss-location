@@ -1,4 +1,5 @@
 import React from 'react'
+import io from 'socket.io-client'
 import './App.css'
 
 class App extends React.Component {
@@ -7,23 +8,17 @@ class App extends React.Component {
 		this.state = {
 			long: '',
 			lat: '',
+			socket: io('https://iss-location-socket-fgq3ldzem.now.sh/'),
 		}
 	}
 
 	componentDidMount() {
-		fetch('https://api.wheretheiss.at/v1/satellites/25544')
-			.then(data => {
-				return data.text()
+		this.state.socket.on('coords', coords => {
+			this.setState({
+				long: coords.long,
+				lat: coords.lat,
 			})
-			.then(data => {
-				return JSON.parse(data)
-			})
-			.then(myJson => {
-				this.setState({
-					long: Number(myJson.longitude).toFixed(2),
-					lat: Number(myJson.latitude).toFixed(2),
-				})
-			})
+		})
 	}
 
 	render() {
